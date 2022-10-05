@@ -9,7 +9,7 @@ const InputBase = ({ name, label }: InputProps) => {
   return (
     <Box>
       <FormControl>
-        <FormLabel htmlFor={name}>{label}</FormLabel>
+        {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
         <Input name={name} id={name} focusBorderColor="yellow.500" />
       </FormControl>
     </Box>

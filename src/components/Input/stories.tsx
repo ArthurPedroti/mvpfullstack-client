@@ -14,3 +14,11 @@ Default.args = {
   name: 'name',
   label: 'Nome'
 }
+
+export const WithoutLabel: ComponentStory<typeof Input> = (args) => (
+  <Input {...args} />
+)
+
+WithoutLabel.args = {
+  name: 'name'
+}

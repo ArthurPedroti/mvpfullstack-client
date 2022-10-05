@@ -17,4 +17,10 @@ describe('<Input />', () => {
       'address'
     )
   })
+
+  it('should render an input without a label', () => {
+    render(<Input name="name" />)
+
+    expect(screen.queryByLabelText('')).not.toBeInTheDocument()
+  })
 })
