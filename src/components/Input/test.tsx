@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import Input from '.'
+import { Input } from '.'
 
 describe('<Input />', () => {
   it('should render the label', () => {

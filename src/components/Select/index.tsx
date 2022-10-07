@@ -15,7 +15,7 @@ type SelectProps = {
   }[]
 } & ChakraSelectProps
 
-const Select = ({ name, label, items, ...rest }: SelectProps) => {
+export const Select = ({ name, label, items, ...rest }: SelectProps) => {
   return (
     <Box>
       <FormControl>
@@ -36,5 +36,3 @@ const Select = ({ name, label, items, ...rest }: SelectProps) => {
     </Box>
   )
 }
-
-export default Select
