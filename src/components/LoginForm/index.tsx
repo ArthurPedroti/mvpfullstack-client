@@ -11,20 +11,21 @@ import logoMvpLogin from '../../assets/logoMvpLogin.png'
 
 const loginFormSchema = zod.object({
   username: zod.string().min(1, 'Usuário obrigatório'),
-  password: zod.string().min(1)
+  password: zod.string().min(1, 'Senha obrigatória')
 })
+
+type LoginFormData = zod.infer<typeof loginFormSchema>
 
 export const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({
+  } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema)
   })
-  console.log(errors)
 
-  const handleLogin = (values: any) => {
+  const handleLogin = (values: LoginFormData) => {
     console.log('submit')
     console.log(values)
   }
@@ -50,8 +51,17 @@ export const LoginForm = () => {
             placeholder="blur"
           />
         </Flex>
-        <Input label="Usuário" {...register('username')} />
-        <Input label="Senha" type="password" {...register('password')} />
+        <Input
+          label="Usuário"
+          {...register('username')}
+          error={errors.username}
+        />
+        <Input
+          label="Senha"
+          type="password"
+          {...register('password')}
+          error={errors.password}
+        />
         <Button colorScheme="yellow" type="submit">
           Entrar
         </Button>
