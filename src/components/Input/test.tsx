@@ -1,6 +1,11 @@
 import { render, screen } from '@testing-library/react'
+import { FieldError } from 'react-hook-form'
 
 import { Input } from '.'
+
+const error = {
+  message: 'Usuário obrigatório'
+} as FieldError
 
 describe('<Input />', () => {
   it('should render the label', () => {
@@ -22,5 +27,11 @@ describe('<Input />', () => {
     render(<Input name="name" />)
 
     expect(screen.queryByLabelText('')).not.toBeInTheDocument()
+  })
+
+  it('should render an input with an error', () => {
+    render(<Input name="name" error={error} />)
+
+    expect(screen.getByText('Usuário obrigatório')).toBeInTheDocument()
   })
 })
